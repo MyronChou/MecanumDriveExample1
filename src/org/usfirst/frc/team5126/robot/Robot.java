@@ -73,13 +73,25 @@ public class Robot extends SampleRobot {
             //This is a push and hold button one to use the shooter. When the button is released it should turn off. 
             if(stick.getRawButton(1)){
             	
-            	//This is moving the motor controller forward at Half Speed. 
+            	//This is setting the motor controller forward at Half Speed. 
             	shooter1.set(0.5);
             }
+            /*
+             * Setting button 2 on the Joystick to go in opposite direction.
+             * 
+             */
+            else if(stick.getRawButton(2)){
+            	//This is setting the motor controller to go the opposite direction at half speed. 
+            	shooter1.set(-0.5);
+            }
             else {
-            	//This will turn the motor controller off (when the button is released).
+            	//This will turn the motor controller off (when the button(s) is released).
             	shooter1.set(0.0);
             }
+            
+            
+           
+            
             
             Timer.delay(0.005);	// wait 5ms to avoid hogging CPU cycles
         }
