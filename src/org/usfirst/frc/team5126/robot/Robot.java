@@ -16,7 +16,7 @@ public class Robot extends SampleRobot {
     RobotDrive robotDrive;
     Joystick stick;
     
-//Test Comment
+
     
     
 
@@ -36,7 +36,9 @@ public class Robot extends SampleRobot {
      * 
      */
     
-    private TalonSRX shooter1 = new TalonSRX(0);
+    private TalonSRX shooter1;
+    
+    
     
     // The channel on the driver station that the joystick is connected to
     final int joystickChannel	= 0;
@@ -48,6 +50,12 @@ public class Robot extends SampleRobot {
         robotDrive.setExpiration(0.1);
 
         stick = new Joystick(joystickChannel);
+        
+        
+        //NOTE--- The actual address of the Talo address needs to be reference on the RoboRIO NI Dashboard. 
+        //IT may not be channel 0!!!!!!!!!!!!!!!!!!
+        
+        shooter1 = new TalonSRX(0);
     }
         
 
@@ -62,10 +70,14 @@ public class Robot extends SampleRobot {
         	// This sample does not use field-oriented drive, so the gyro input is set to zero.
             robotDrive.mecanumDrive_Cartesian(stick.getX(), stick.getY(), stick.getZ(), 0);
             
+            //This is a push and hold button one to use the shooter. When the button is released it should turn off. 
             if(stick.getRawButton(1)){
+            	
+            	//This is moving the motor controller forward at Half Speed. 
             	shooter1.set(0.5);
             }
             else {
+            	//This will turn the motor controller off (when the button is released).
             	shooter1.set(0.0);
             }
             
