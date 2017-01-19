@@ -14,8 +14,17 @@ public class Robot extends SampleRobot {
 	
     RobotDrive robotDrive;
     Joystick stick;
+    
+//Test Comment
+    
+    
 
     // Channels for the wheels
+    /*
+     * The channels refer to the PWM connections on the roboRio. 
+     * In this example we are using a combination of Victor and Talon Speed Controllers. 
+     * 
+     */
     final int frontLeftChannel	= 2;
     final int rearLeftChannel	= 3;
     final int frontRightChannel	= 1;
